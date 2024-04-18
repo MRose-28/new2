@@ -4,6 +4,7 @@
 # In[ ]:
 
 import dash
+import more_itertools
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -74,7 +75,7 @@ def update_input_container(children):
     Output(component_id='output-container', component_property='children'),
     [Input(component_id='select-year', component_property='value'), Input(component_id='dropdown-statistics', component_property='value')])
 
-def update_output_container('Select Statistics', 'Select Year'):
+def update_output_container('Select Statistics', input_year):
     if 'Select Statistics' == 'Recession Period Statistics':
         # Filter the data for recession periods
         recession_data = data[data['Recession'] == 1]
