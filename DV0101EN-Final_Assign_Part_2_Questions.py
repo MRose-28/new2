@@ -63,8 +63,8 @@ app.layout = html.Div([
     Output(component_id='select-year', component_property='disabled'),
     Input(component_id='dropdown-statistics',component_property='value'))
 
-def update_input_container(children):
-    if 'dropdown-statistics' =='Recession Period Statistics': 
+def update_input_container(selected_statistics):
+    if selected_statistics =='Yearly Statistics': 
         return False
     else: 
         return True
@@ -75,8 +75,8 @@ def update_input_container(children):
     Output(component_id='output-container', component_property='children'),
     [Input(component_id='select-year', component_property='value'), Input(component_id='dropdown-statistics', component_property='value')])
 
-def update_output_container('Select Statistics', input_year):
-    if 'Select Statistics' == 'Recession Period Statistics':
+def update_output_container(selected_statistics, input_year):
+    if selected_statistics == 'Recession Period Statistics':
         # Filter the data for recession periods
         recession_data = data[data['Recession'] == 1]
         
